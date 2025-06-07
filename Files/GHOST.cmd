@@ -13,7 +13,7 @@ ECHO     Looking for older instances of Office in the Control Panel
 ECHO             If found, the installation will fail.
 ECHO.
 ECHO ---------------------------------------------------------------
-ECHO    Copyright (c) 2013-2024 Stephan Pringle. All rights reserved.
+ECHO    Copyright (c) 2013-%DATE:~6,4% Stephan Pringle. All rights reserved.
 ECHO                Licensed to Essex County College
 ECHO ---------------------------------------------------------------
 ECHO.
@@ -73,6 +73,3 @@ GOTO SELECT
 :DONE
 "GHOST.cmd"
 :E
-CLS&TITLE Essex County College
-ECHO To close this window . . .
-PAUSE
