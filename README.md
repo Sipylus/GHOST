@@ -3,9 +3,9 @@ G.H.O.S.T. (aka [GHOST](https://github.com/nyhtml/GHOST)) is a project that uses
 
 ## Languages
 * [English (en-us)](/README-en.md)
-* French (fr)
-* German (de)
-* Hindi (hi)
-* Spanish (es)
-* Japanese (ja)
-* Simplified Chinese (zh-cn)
+* [Français (fr)](/README-fr.md)
+* [Deutsch (de)](/README-de.md)
+* [हिन्दी (hi)](/README-hi.md)
+* [Español (es)](/README-es.md)
+* [日本語 (ja)](/README-ja.md)
+* [简体中文 (zh-cn)](/README-zh-cn.md)
