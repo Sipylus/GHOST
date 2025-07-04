@@ -1,19 +1,19 @@
-@ECHO OFF && COLOR 0A && TITLE GHOST v2024.06
+@ECHO OFF && COLOR 0A && TITLE GHOST v2025.07
+
+:: Get current year reliably using PowerShell
+FOR /F %%i IN ('powershell -NoProfile -Command "Get-Date -Format yyyy"') DO SET Year=%%i
 
 :SELECT
 CLS
 
 ECHO ---------------------------------------------------------------
-ECHO          GHOST v2024.06 - Getting Here Once Saves Time
+ECHO          GHOST v2025.07 - Getting Here Once Saves Time
 ECHO ---------------------------------------------------------------
 ECHO.
 ECHO    Please make sure that you are connected to the Internet.
 ECHO.
-ECHO     Looking for older instances of Office in the Control Panel
-ECHO             If found, the installation will fail.
-ECHO.
 ECHO ---------------------------------------------------------------
-ECHO    Copyright (c) 2013-%DATE:~6,4% Stephan Pringle. All rights reserved.
+ECHO    Copyright (c) 2013-%Year% Stephan Pringle. All rights reserved.
 ECHO                Licensed to Essex County College
 ECHO ---------------------------------------------------------------
 ECHO.
