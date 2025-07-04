@@ -42,33 +42,67 @@ IF %ChoosedLanguage% GEQ 1 IF %ChoosedLanguage% LEQ 187 GOTO %ChoosedLanguage%
 GOTO SELECT
 
 :1
-"Apps\CuteWriter.exe"&GOTO DONE
+"Apps\CuteWriter.exe"
+GOTO DONE
+
 :2
-"Apps\readerdc.exe"&GOTO DONE
+"Apps\readerdc.exe"
+GOTO DONE
+
 :3
-"Apps\anyconnect.msi"&GOTO DONE
+"Apps\anyconnect.msi"
+GOTO DONE
+
 :4
-"Apps\ChromeSetup.exe"&GOTO DONE
+"Apps\ChromeSetup.exe"
+GOTO DONE
+
 :5
-"Apps\dotnetfx35.exe"&REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"&GOTO DONE
+"Apps\dotnetfx35.exe"
+REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
+GOTO DONE
+
 :6
-"Apps\Firefox Installer.exe"&GOTO DONE
+"Apps\Firefox Installer.exe"
+GOTO DONE
+
 :7
-"Apps\npp.exe"&GOTO DONE
+"Apps\npp.exe"
+GOTO DONE
+
 :8
-"Apps\OperaSetup.exe"&GOTO DONE
+"Apps\OperaSetup.exe"
+GOTO DONE
+
 :9
-"Apps\jre-6u25-windows-i586-s.exe"&"jre-7-windows-x64.exe"&GOTO DONE
+"Apps\jre-6u25-windows-i586-s.exe"
+"Apps\jre-7-windows-x64.exe"
+GOTO DONE
+
 :10
-"Apps\essex_SurePDF.msi"&GOTO DONE
+"Apps\essex_SurePDF.msi"
+GOTO DONE
+
 :11
-"Apps\vlc-3.0.20-win64.exe"&GOTO DONE
+"Apps\vlc-3.0.20-win64.exe"
+GOTO DONE
+
 :12
-"Apps\ZoomInstallerFull.exe"&GOTO DONE
+"Apps\ZoomInstallerFull.exe"
+GOTO DONE
+
 :13
-"MOPPI.cmd"&GOTO DONE
+CALL MOPPI.cmd
+GOTO DONE
+
+:13
+CALL MOPPI.cmd
+GOTO DONE
+
 :20
-"Apps\Essex.cmd"&PAUSE&GOTO DONE
+CALL :1 & CALL :2 & CALL :3 & CALL :4 & CALL :5 & CALL :6 & CALL :7 & CALL :8 & CALL :9 & CALL :10 & CALL :11 & CALL :12
+PAUSE
+GOTO DONE
 
 :DONE
 GOTO SELECT
