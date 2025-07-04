@@ -1,11 +1,12 @@
-@ECHO OFF && COLOR 0A && TITLE GHOST v2025.07
+@ECHO OFF
+COLOR 1F && CLS
+TITLE GHOST v2025.07
 
 :: Get current year reliably using PowerShell
 FOR /F %%i IN ('powershell -NoProfile -Command "Get-Date -Format yyyy"') DO SET Year=%%i
 
 :SELECT
 CLS
-
 ECHO ---------------------------------------------------------------
 ECHO          GHOST v2025.07 - Getting Here Once Saves Time
 ECHO ---------------------------------------------------------------
