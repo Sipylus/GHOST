@@ -71,5 +71,5 @@ GOTO SELECT
 "Apps\Essex.cmd"&PAUSE&GOTO DONE
 
 :DONE
-"GHOST.cmd"
+GOTO SELECT
 :E
