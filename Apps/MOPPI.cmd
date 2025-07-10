@@ -102,4 +102,5 @@ TIMEOUT /T 3 >NUL
 GOTO SELECT
 
 :E
+ECHO Exiting...
 EXIT
