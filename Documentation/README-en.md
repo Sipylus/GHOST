@@ -19,6 +19,7 @@ G.H.O.S.T. (aka [GHOST](https://github.com/nyhtml/GHOST)) is a project that uses
 * Oracle Java 6 & 7
 * RSA SurePDF
 * VideoLAN VLC media player
+* WinSCP
 * Zoom Client for Meetings
 
 ## Installation
