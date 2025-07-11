@@ -1,13 +1,12 @@
 @ECHO OFF
-COLOR 1F
-TITLE MOPPI v2025.06
+COLOR 1F && CLS
+TITLE MOPPI v2025.07
 
-:: Get current year reliably using PowerShell
+:: Get current year using PowerShell (works on all modern systems)
 FOR /F %%i IN ('powershell -NoProfile -Command "Get-Date -Format yyyy"') DO SET Year=%%i
 
 :SELECT
 CLS
-
 ECHO ---------------------------------------------------------------
 ECHO    M.O.P.P.I. - Microsoft Office Professional Plus Installer
 ECHO ---------------------------------------------------------------
@@ -35,72 +34,71 @@ ECHO 10. Office Removal Tool (The system will reboot)
 ECHO.
 SET /P ChoosedLanguage=Enter a number and press ENTER key or 0 to quit: 
 
-:: Validate numeric input
+:: Validate input
 SETLOCAL ENABLEDELAYEDEXPANSION
 SET /A Dummy=%ChoosedLanguage% >NUL 2>&1
 IF ERRORLEVEL 1 (
     ENDLOCAL
-    ECHO Invalid selection. Please enter a valid number.
+    ECHO Invalid input. Please enter a number.
     TIMEOUT /T 2 >NUL
     GOTO SELECT
 )
 ENDLOCAL
 
-IF "%ChoosedLanguage%"=="0" GOTO E
-
-:: Check valid range (1-7, or 10)
-IF "%ChoosedLanguage%"=="10" GOTO %ChoosedLanguage%
-IF %ChoosedLanguage% GEQ 1 IF %ChoosedLanguage% LEQ 7 GOTO %ChoosedLanguage%
+:: Routing
+IF "%ChoosedLanguage%"=="0" GOTO ExitApp
+IF "%ChoosedLanguage%"=="1" GOTO Install2019
+IF "%ChoosedLanguage%"=="2" GOTO Install2019Plus
+IF "%ChoosedLanguage%"=="3" GOTO Install2021
+IF "%ChoosedLanguage%"=="4" GOTO Install2021Plus
+IF "%ChoosedLanguage%"=="5" GOTO Install2024
+IF "%ChoosedLanguage%"=="6" GOTO Install2024Plus
+IF "%ChoosedLanguage%"=="7" GOTO Install365
+IF "%ChoosedLanguage%"=="10" GOTO RunRemovalTool
 
 ECHO Invalid selection. Please enter a valid option.
 TIMEOUT /T 2 >NUL
 GOTO SELECT
 
-:1
-ECHO Installing Office 2019...
+:Install2019
 "Office\2019.exe" /configure "Configuration\2019.xml"
-GOTO DONE
+GOTO Done
 
-:2
-ECHO Installing Office 2019 + Projects & Visio...
+:Install2019Plus
 "Office\2019.exe" /configure "Configuration\2019plus.xml"
-GOTO DONE
+GOTO Done
 
-:3
-ECHO Installing Office 2021...
+:Install2021
 "Office\2021.exe" /configure "Configuration\2021.xml"
-GOTO DONE
+GOTO Done
 
-:4
-ECHO Installing Office 2021 + Projects & Visio...
+:Install2021Plus
 "Office\2021.exe" /configure "Configuration\2021plus.xml"
-GOTO DONE
+GOTO Done
 
-:5
-ECHO Installing Office 2024...
+:Install2024
 "Office\2024.exe" /configure "Configuration\2024.xml"
-GOTO DONE
+GOTO Done
 
-:6
-ECHO Installing Office 2024 + Projects & Visio...
+:Install2024Plus
 "Office\2024.exe" /configure "Configuration\2024plus.xml"
-GOTO DONE
+GOTO Done
 
-:7
-ECHO Installing Office 365...
+:Install365
 "Office\365.exe"
-GOTO DONE
+GOTO Done
 
-:10
-ECHO Running Office Removal Tool...
+:RunRemovalTool
 "Office\SetupProd_OffScrub.exe"
-GOTO DONE
+GOTO Done
 
-:DONE
-ECHO Returning to menu...
+:Done
+ECHO.
+ECHO Returning to MOPPI main menu...
 TIMEOUT /T 3 >NUL
 GOTO SELECT
 
-:E
-ECHO Exiting...
+:ExitApp
+ECHO Exiting MOPPI...
+TIMEOUT /T 1 >NUL
 EXIT
