@@ -50,107 +50,119 @@ IF ERRORLEVEL 1 (
 )
 ENDLOCAL
 
-IF "%ChoosedLanguage%"=="0" GOTO E
-
-:: Check valid range for individual options or all options (20)
-IF "%ChoosedLanguage%"=="20" GOTO 20
-IF %ChoosedLanguage% GEQ 1 IF %ChoosedLanguage% LEQ 13 GOTO %ChoosedLanguage%
+:: Routing
+IF "%ChoosedLanguage%"=="0" GOTO ExitApp
+IF "%ChoosedLanguage%"=="1" GOTO InstallCutePDF
+IF "%ChoosedLanguage%"=="2" GOTO InstallAdobeReader
+IF "%ChoosedLanguage%"=="3" GOTO InstallCisco
+IF "%ChoosedLanguage%"=="4" GOTO InstallChrome
+IF "%ChoosedLanguage%"=="5" GOTO InstallDotNet
+IF "%ChoosedLanguage%"=="6" GOTO InstallFirefox
+IF "%ChoosedLanguage%"=="7" GOTO InstallNotepadPP
+IF "%ChoosedLanguage%"=="8" GOTO InstallOpera
+IF "%ChoosedLanguage%"=="9" GOTO InstallJava
+IF "%ChoosedLanguage%"=="10" GOTO InstallSurePDF
+IF "%ChoosedLanguage%"=="11" GOTO InstallVLC
+IF "%ChoosedLanguage%"=="12" GOTO InstallZoom
+IF "%ChoosedLanguage%"=="13" GOTO InstallOffice
+IF "%ChoosedLanguage%"=="20" GOTO InstallAll
 
 ECHO Invalid selection. Please enter a valid option.
 TIMEOUT /T 2 >NUL
 GOTO SELECT
 
-:1
+:: Installers
+:InstallCutePDF
 ECHO Launching CutePDF...
 "Apps\CuteWriter.exe"
-GOTO DONE
+GOTO Done
 
-:2
+:InstallAdobeReader
 ECHO Launching Adobe Reader DC...
 "Apps\readerdc.exe"
-GOTO DONE
+GOTO Done
 
-:3
+:InstallCisco
 ECHO Launching Cisco AnyConnect Installer...
 "Apps\anyconnect.msi"
-GOTO DONE
+GOTO Done
 
-:4
+:InstallChrome
 ECHO Launching Google Chrome Installer...
 "Apps\ChromeSetup.exe"
-GOTO DONE
+GOTO Done
 
-:5
+:InstallDotNet
 ECHO Launching Microsoft .NET Framework Installer...
 "Apps\dotnetfx35.exe"
 REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
-GOTO DONE
+GOTO Done
 
-:6
+:InstallFirefox
 ECHO Launching Mozilla Firefox Installer...
 "Apps\Firefox Installer.exe"
-GOTO DONE
+GOTO Done
 
-:7
+:InstallNotepadPP
 ECHO Launching Notepad++...
 "Apps\npp.exe"
-GOTO DONE
+GOTO Done
 
-:8
+:InstallOpera
 ECHO Launching Opera Browser Installer...
 "Apps\OperaSetup.exe"
-GOTO DONE
+GOTO Done
 
-:9
-ECHO Launching Oracle Java 6 ^& 7 Installers...
+:InstallJava
+ECHO Launching Oracle Java 6 & 7 Installers...
 "Apps\jre-6u25-windows-i586-s.exe"
 "Apps\jre-7-windows-x64.exe"
-GOTO DONE
+GOTO Done
 
-:10
+:InstallSurePDF
 ECHO Launching RSA SurePDF Installer...
 "Apps\essex_SurePDF.msi"
-GOTO DONE
+GOTO Done
 
-:11
+:InstallVLC
 ECHO Launching VLC Media Player Installer...
 "Apps\vlc.exe"
-GOTO DONE
+GOTO Done
 
-:12
+:InstallZoom
 ECHO Launching Zoom Client Installer...
 "Apps\ZoomInstallerFull.exe"
-GOTO DONE
+GOTO Done
 
-:13
+:InstallOffice
 ECHO Launching Microsoft Office Installer (MOPPI)...
 CALL MOPPI.cmd
-GOTO DONE
+GOTO Done
 
-:20
+:InstallAll
 ECHO Running all installers in sequence...
-CALL :1
-CALL :2
-CALL :3
-CALL :4
-CALL :5
-CALL :6
-CALL :7
-CALL :8
-CALL :9
-CALL :10
-CALL :11
-CALL :12
-GOTO 13
-PAUSE
-GOTO DONE
+CALL :InstallCutePDF
+CALL :InstallAdobeReader
+CALL :InstallCisco
+CALL :InstallChrome
+CALL :InstallDotNet
+CALL :InstallFirefox
+CALL :InstallNotepadPP
+CALL :InstallOpera
+CALL :InstallJava
+CALL :InstallSurePDF
+CALL :InstallVLC
+CALL :InstallZoom
+CALL :InstallOffice
+GOTO Done
 
-:DONE
+:Done
 ECHO.
 ECHO Returning to main menu...
 TIMEOUT /T 3 >NUL
 GOTO SELECT
 
-:E
-ECHO Exiting...
+:ExitApp
+ECHO Exiting GHOST...
+TIMEOUT /T 1 >NUL
 EXIT
